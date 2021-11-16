@@ -18,7 +18,7 @@ class CreateBlogPostsTable extends Migration
             $table->longText('content');
             $table->string('title', 100);
             $table->string('description', 255);
-            $table->string('img_link', 255);
+            $table->string('img_link', 255)->nullable();
             $table->integer('created_by');
             $table->timestamps();
         });
