@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,6 @@ Route::get('/index', function () {
 Route::get('/about', function () {
     return view('about');
 });
-Route::get('/article', function () {
-    return view('article');
-});
 Route::get('/contact', function () {
     return view('contact');
 });
@@ -33,3 +31,4 @@ Route::get('/messages', function () {
 Route::get("/",[HomeController::class,"index"]);
 Route::get("/post",[PostController::class,"post"]);
 Route::post("/post/create",[PostController::class,"create_post"]);
+Route::get("/article/{blog_id}",[ArticleController::class,"index"]);
