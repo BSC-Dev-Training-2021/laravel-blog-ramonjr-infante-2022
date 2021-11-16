@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/index', function () {
+    return redirect("/");
+});
+Route::get('/about', function () {
+    return view('about');
+});
+Route::get('/article', function () {
+    return view('article');
+});
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::get('/messages', function () {
+    return view('messages');
+});
 
-Route::get('/', function () {
-    return view('index');
-})->middleware("qweqwe");
+Route::get("/",[HomeController::class,"index"]);
+Route::get("/post",[PostController::class,"post"]);
+Route::post("/post/create",[PostController::class,"create_post"]);
