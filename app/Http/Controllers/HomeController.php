@@ -18,7 +18,6 @@ class HomeController extends Controller
         "blog_posts.img_link","blog_posts.created_by","blog_posts.created_at","blog_posts.updated_at")
                 ->join('users', 'users.id', '=', 'blog_posts.created_by')
                 ->get();
-
         return view('index')->with(["blogs"=>$data]);
     }
 
