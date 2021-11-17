@@ -21,7 +21,7 @@
                         <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
                         <!-- Post content-->
                         <section class="mb-5">
-                            {{$blog[0]->content}}
+                            {!! nl2br(e($blog[0]->content))!!}
                         </section>
                     </article>
                     <!-- Comments section-->

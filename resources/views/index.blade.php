@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <div class="small text-muted">{{$blogs[0]->created_at}}</div>
                             <h2 class="card-title">{{$blogs[0]->title}}</h2>
-                            <p class="card-text">{{$blogs[0]->description}}</p>
+                            <p class="card-text">{!! nl2br(e($blogs[0]->description))!!}</p>
                             <a class="btn btn-primary" href="article/{{$blogs[0]->id}}">Read more →</a>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                                 <div class="card-body">
                                     <div class="small text-muted">{{$blogs[$x]->created_at}}</div>
                                     <h2 class="card-title">{{$blogs[$x]->title}}</h2>
-                                    <p class="card-text">{{$blogs[$x]->description}}</p>
+                                    <p class="card-text">{!! nl2br(e($blogs[$x]->description))!!}</p>
                                     <a class="btn btn-primary" href="article/{{$blogs[$x]->id}}">Read more →</a>
                                 </div>
                             </div>
