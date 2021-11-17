@@ -25,51 +25,39 @@
                         </section>
                     </article>
                     <!-- Comments section-->
+
+
+
+
+
                     <section class="mb-5">
                         <div class="card bg-light">
                             <div class="card-body">
                                 <!-- Comment form-->
-                                <form class="mb-4">
+                                <form class="mb-4" method="POST" action="/article/insert_comment/{{$blog[0]->id}}" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
                                     <div>
-                                        <textarea class="form-control mb-2" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
+                                        @if($errors->first('blog_comment_txt'))
+                                            <span style="color:red;">{{$errors->first('blog_comment_txt')}}</span>
+                                        @endif
+                                        <textarea class="form-control mb-2 {{$errors->first('blog_comment_txt') ? 'error_style' : ''}}" name="blog_comment_txt" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
                                     </div>
                                     <div>
-                                        <button type="submit" class="btn btn-primary">Post Comment</button>
+                                        <button type="submit" name="comment_btn" class="btn btn-primary">Post Comment</button>
                                     </div>
                                 </form>
-                                <!-- Comment with nested comments-->
-                                <div class="d-flex mb-4">
-                                    <!-- Parent comment-->
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                    <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
-                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
-                                        <!-- Child comment 1-->
-                                        <div class="d-flex mt-4">
-                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                            <div class="ms-3">
-                                                <div class="fw-bold">Commenter Name</div>
-                                                And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
-                                            </div>
-                                        </div>
-                                        <!-- Child comment 2-->
-                                        <div class="d-flex mt-4">
-                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                            <div class="ms-3">
-                                                <div class="fw-bold">Commenter Name</div>
-                                                When you put money directly to a problem, it makes a good headline.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <!-- Single comment-->
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                    <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
-                                        When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
-                                    </div>
-                                </div>
+                                @if(count($blog[0]['comments']) != 0)
+                                    @for($x = 0;$x < count($blog[0]['comments']);$x++)
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                            <div class="ms-3">
+                                                <div class="fw-bold">{{$blog[0]['comments'][$x]['name']}}</div>
+                                                <p>{{$blog[0]['comments'][$x]['comment']}}</p>
+                                            </div>
+                                        </div>
+                                    @endfor
+                                @endif
                             </div>
                         </div>
                     </section>

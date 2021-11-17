@@ -15,6 +15,9 @@
             <div class="row">
                 <!-- Blog entries-->
                 <div class="col-lg-8">
+                @if(count($blogs) == 0)
+                    <h2 style="text-align:center;">No blog post</h2>
+                @endif
                 @if(count($blogs) != 0)
                     <div class="card mb-4">
                         <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>

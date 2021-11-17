@@ -32,3 +32,4 @@ Route::get("/",[HomeController::class,"index"]);
 Route::get("/post",[PostController::class,"post"]);
 Route::post("/post/create",[PostController::class,"create_post"]);
 Route::get("/article/{blog_id}",[ArticleController::class,"index"]);
+Route::post("/article/insert_comment/{blog_id}",[ArticleController::class,"insert_comment"]);
