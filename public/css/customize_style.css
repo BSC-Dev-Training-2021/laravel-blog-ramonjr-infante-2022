@@ -1,0 +1,6 @@
+.error_style{
+    border:1px solid red;
+}
+.error_style:focus{
+    outline: none !important;
+}
