@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,9 @@ Route::get("/post",[PostController::class,"post"]);
 Route::post("/post/create",[PostController::class,"create_post"]);
 Route::get("/article/{blog_id}",[ArticleController::class,"index"]);
 Route::post("/article/insert_comment/{blog_id}",[ArticleController::class,"insert_comment"]);
+Route::get("/categories",[CategoryController::class,"index"]);
+Route::post("/category/create_catagory",[CategoryController::class,"create_catagory"]);
+Route::post("/category/update_category",[CategoryController::class,"update_category"]);
+Route::post("/category/delete_category",[CategoryController::class,"delete_category"]);
+
+
