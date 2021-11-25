@@ -21,11 +21,11 @@
                                     <tr>
                                         <td class="cat_name_elipsis">{{$categories[$x]->name}}</td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm float-left edit_btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                            <!-- category_no_of_posts="{{$categories[$x]->no_of_posts}}" category_name="{{$categories[$x]->name}}" category_id="{{$categories[$x]->id}}" -->
+                                            <button class="btn btn-primary btn-sm float-left edit_btn"
+                                            data-category-data="{{$categories[$x]}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                             @if(count($categories[$x]->posts) == 0)
-                                                <button class="btn btn-primary btn-sm float-right ml5 delete_btn" ><i class="fa fa-trash" aria-hidden="true"></i></button>
-                                                <!-- category_name="{{$categories[$x]->name}}" category_id="{{$categories[$x]->id}}" -->
+                                                <button class="btn btn-primary btn-sm float-right ml5 delete_btn" 
+                                                data-category-data="{{$categories[$x]}}"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                             @endif
                                         </td>
                                     </tr>
@@ -63,9 +63,6 @@
                                     <div class="form-group">
                                         <label >Name</label>
                                         <input type="text" class="form-control {{$errors->first('category_name') ? 'error_style' : ''}} category_name" id="edit_category_name" name="category_name" placeholder="Category">
-                                        @if($errors->first('category_name'))
-                                            <span style="color:red;">{{$errors->first('category_name')}}</span>
-                                        @endif
                                     </div>
                                     <input type="hidden" class="category_id" name="category_id">
                                     <br/>

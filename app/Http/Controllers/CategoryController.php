@@ -16,8 +16,8 @@ class CategoryController extends Controller
 
     public function index(){
         $categories = CategoryType::orderBy('id', 'desc')->get();
-        for($x = 0;$x < count($categories);$x++){
-            $categories[$x]['posts'] = CategoryType::find($categories[$x]->id)->post_in_category;
+        foreach ($categories as $category) {
+            $category['posts'] = CategoryType::find($category->id)->post_in_category;
         }
         return view("categories")->with(["categories"=>$categories]);
     }
@@ -39,10 +39,11 @@ class CategoryController extends Controller
     }
     public function check_cat_name($request){
         $validated = $request->validate([
-            'category_name' => 'required',
+            'category_name' => 'required|unique:category_types,name',
         ],
         [   
             'category_name.required' => 'Category name is empty',
+            'category_name.unique' => 'Category name is already exist',
         ]);
     }
     public function delete_category(Request $request){
