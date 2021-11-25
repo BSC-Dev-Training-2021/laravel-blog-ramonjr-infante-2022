@@ -21,11 +21,11 @@
                                     <tr>
                                         <td class="cat_name_elipsis">{{$categories[$x]->name}}</td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm float-left edit_btn" 
-                                            category_no_of_posts="{{$categories[$x]->no_of_posts}}" category_name="{{$categories[$x]->name}}" category_id="{{$categories[$x]->id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                            @if($categories[$x]->no_of_posts == 0)
-                                                <button class="btn btn-primary btn-sm float-right ml5 delete_btn"
-                                                category_name="{{$categories[$x]->name}}" category_id="{{$categories[$x]->id}}"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                            <button class="btn btn-primary btn-sm float-left edit_btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                            <!-- category_no_of_posts="{{$categories[$x]->no_of_posts}}" category_name="{{$categories[$x]->name}}" category_id="{{$categories[$x]->id}}" -->
+                                            @if(count($categories[$x]->posts) == 0)
+                                                <button class="btn btn-primary btn-sm float-right ml5 delete_btn" ><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                <!-- category_name="{{$categories[$x]->name}}" category_id="{{$categories[$x]->id}}" -->
                                             @endif
                                         </td>
                                     </tr>

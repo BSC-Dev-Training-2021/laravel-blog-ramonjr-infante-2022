@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CategoryType;
 use App\Models\BlogPostCategory;
+use Illuminate\Database\Eloquent\Model;
 
 class CategoryController extends Controller
 {
@@ -16,8 +17,7 @@ class CategoryController extends Controller
     public function index(){
         $categories = CategoryType::orderBy('id', 'desc')->get();
         for($x = 0;$x < count($categories);$x++){
-            $number_of_post_in_specific_category = BlogPostCategory::where("category_id","=",$categories[$x]->id)->count();
-            $categories[$x]['no_of_posts'] = $number_of_post_in_specific_category;
+            $categories[$x]['posts'] = CategoryType::find($categories[$x]->id)->post_in_category;
         }
         return view("categories")->with(["categories"=>$categories]);
     }

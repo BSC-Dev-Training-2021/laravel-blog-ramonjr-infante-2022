@@ -13,4 +13,5 @@ class BlogPostCategory extends Model
         'blog_post_id',
         'category_id',
     ];
+
 }
