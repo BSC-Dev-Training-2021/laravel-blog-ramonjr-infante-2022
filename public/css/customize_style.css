@@ -4,3 +4,35 @@
 .error_style:focus{
     outline: none !important;
 }
+.auto-scroll{
+    display:block;
+    overflow:auto;
+    max-height:280px;
+    width:100%;
+}
+.float-left{
+    float:left;
+}
+.float-right{
+    float:right;
+}
+.ml5{
+    margin-left:5px;
+}
+.text-center{
+    text-align:center;
+}
+.form-design{
+    box-shadow:0px 0px 10px grey;
+    padding:20px;
+    overflow:hidden;
+}
+.hide_element{
+    display:none;
+}
+.cat_name_elipsis{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width:150px;
+}
