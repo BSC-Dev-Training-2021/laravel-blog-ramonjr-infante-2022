@@ -15,11 +15,11 @@
                             </header>
                             <!-- Post content-->
 
-                               @isset($success)
-                                <div class="alert alert-success" role="alert">
-                                    {{$success}}
+                            @if(session()->has('success_message'))
+                                <div class="alert alert-success">
+                                    {{ session()->get('success_message') }}
                                 </div>
-                                @endisset
+                            @endif
                             <section class="mb-5">
                                 <form method="POST" action="/post/create" enctype="multipart/form-data">
                                     {{ csrf_field() }}

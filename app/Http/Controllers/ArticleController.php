@@ -25,7 +25,6 @@ class ArticleController extends Controller
         $comments = $this->get_blog_comments($data[0]->id);
         $data[0]->categories = $categories;
         $data[0]->comments = $comments;
-        // return $data;
         return view('article')->with(["blog"=>$data]);
     }
 
@@ -46,7 +45,7 @@ class ArticleController extends Controller
             "blog_post_id"=>$blog_id,
         ];
         BlogPostComment::create($insert_comment);
-        return redirect()->back();
+        return back();
     }
     public function get_blog_comments($blog_id){
         $comments = BlogPostComment::select("blog_post_comments.id","blog_post_comments.comment",

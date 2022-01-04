@@ -27,7 +27,7 @@ class PostController extends Controller
         ];
         $new_post = BlogPost::create($data);
         $this->connect_blog_to_category($new_post->id,$request['blog_category_txt']);
-        return redirect("/post")->with(["categories"=>CategoryType::all(),"success"=>"Blog posted"]);
+        return back()->with(["categories"=>CategoryType::all(),"success_message"=>"Blog posted"]);
     }
 
     public function validate_blog_form($request){

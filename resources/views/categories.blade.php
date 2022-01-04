@@ -51,22 +51,20 @@
                                 </form>
                             </div>
                             <div class="form-design hide_element" id="edit_cat_form">
-                                <div class="alert alert-warning category_warning">
+                                <div class="alert alert-warning hide_element category_warning">
                                     Category has <strong class="number_of_posts"></strong> posts attached to it.
                                 </div>
                                 <h5>Edit Category</h5>
                                 <form method="POST" action="/category/update_category" enctype="multipart/form-data"> 
                                     {{ csrf_field() }}
-                                    <div class="alert alert-danger hide_element edit_category_empty">
-                                        Category name is empty
-                                    </div>
                                     <div class="form-group">
                                         <label >Name</label>
-                                        <input type="text" class="form-control {{$errors->first('category_name') ? 'error_style' : ''}} category_name" id="edit_category_name" name="category_name" placeholder="Category">
+                                        <input type="text" class="form-control category_name" id="edit_category_name" name="category_name" placeholder="Category">
+                                        <span style="color:red;"></span>
                                     </div>
                                     <input type="hidden" class="category_id" name="category_id">
                                     <br/>
-                                    <button type="submit" id="update_category_btn" name="update_category_btn" class="btn btn-primary form-control">Update Category</button>
+                                    <button type="submit" data-categories-data="{{$categories}}" id="update_category_btn" name="update_category_btn" class="btn btn-primary form-control">Update Category</button>
                                 </form>
                             </div>
                             <div class="form-design hide_element" id="delete_cat_form">

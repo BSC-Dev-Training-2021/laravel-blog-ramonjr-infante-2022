@@ -16,6 +16,7 @@ class CategoryController extends Controller
 
     public function index(){
         $categories = CategoryType::orderBy('id', 'desc')->get();
+
         foreach ($categories as $category) {
             $category['posts'] = CategoryType::find($category->id)->post_in_category;
         }

@@ -26,10 +26,6 @@
                     </article>
                     <!-- Comments section-->
 
-
-
-
-
                     <section class="mb-5">
                         <div class="card bg-light">
                             <div class="card-body">

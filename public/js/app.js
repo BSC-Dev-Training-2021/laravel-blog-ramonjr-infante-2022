@@ -4,9 +4,10 @@ $(document).ready(function() {
         $('#edit_cat_form').hide();
         $('#delete_cat_form').hide();
         $('#add_cat_form').show();
+        removeErrorMessage();
     });
     $(document).on('click','.edit_btn',function(){
-        $('.edit_category_empty').hide();
+        removeErrorMessage();
         $('#delete_cat_form').hide();
         $('#add_cat_form').hide();
         $('#edit_cat_form').show();
@@ -28,12 +29,29 @@ $(document).ready(function() {
         $('#edit_cat_form').hide();
         $('#delete_cat_form').hide();
         $('#add_cat_form').show();
+        removeErrorMessage();
     });
     $(document).on('click','#update_category_btn',function(e){
+        let categories = $(this).data("categories-data");
         if($('#edit_category_name').val() == ""){
-            $('.alert-danger').show();
+            $('#edit_cat_form input').addClass("error_style");
+            $('#edit_cat_form span').text("Category name is empty");
             e.preventDefault();
+            return;
         }
-        console.log($('#edit_category_name').val());
+        for(var x = 0;x < categories.length;x++){
+           if(categories[x].name == $('#edit_category_name').val()){
+                $('#edit_cat_form input').addClass("error_style");
+                $('#edit_cat_form span').text("Category name is already exist");
+                e.preventDefault();
+               return;
+           }
+        }
     });
+    function removeErrorMessage(){
+        $('#add_cat_form input').removeClass("error_style");
+        $('#add_cat_form span').text("");
+        $('#edit_cat_form input').removeClass("error_style");
+        $('#edit_cat_form span').text("");
+    }
 });
